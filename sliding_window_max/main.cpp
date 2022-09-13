@@ -2,7 +2,7 @@
 #include <vector>
 #include <deque>
 
-void maxElements(std::vector<int>& v, size_t windowSize)
+void maxElements(std::vector<int>& v, int windowSize)
 {
     std::deque<int> deq;
     deq.push_back(0);
@@ -21,7 +21,7 @@ void maxElements(std::vector<int>& v, size_t windowSize)
     {
         std::cout << v[deq.front()] << " ";
 
-        while ((!deq.empty()) && deq.front() <= (i - windowSize))
+        while ((!deq.empty()) && (deq.front() <= (i - windowSize)))
         {
             deq.pop_front();
         }

@@ -1,25 +1,43 @@
 #include <iostream>
 #include <fstream>
 #include <vector>
+#include <stack>
 
-int checker(std::vector<char>& src, int k)
+int check(std::vector<char>& v, int i)
 {
-    int i = k;
+    
+}
 
-    while (True)
+int checker(std::vector<char>& v)
+{
+    std::stack<int> s;
+    for (int i = 0; i < v.size(); i++)
     {
+        if (v[i] == '(')
+        {
+            s.push(i);       
+        }
+        
         if (v[i] == ')')
         {
-            return i;
-        }
+            if (!s.empty())
+            {
+                s.pop();
+            }
 
-        if ((v[i] == '(') && ((int p = checker(src, i + 1)) == -1))
-        {
-            return i;
+            else 
+            {
+                s.push(i);
+            }
         }
-
-        i++;
     }
+    
+    if (!s.empty())
+    {
+        return s.top();
+    }   
+
+    return -1;
 }
 
 int main()
@@ -45,7 +63,7 @@ int main()
         std::cout << i;
     }
 
-    std::cout << v.size();
+    std::cout << checker(v);
 
     return 0;
 }
