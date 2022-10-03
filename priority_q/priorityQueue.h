@@ -2,15 +2,6 @@
 #include <algorithm>
 #include <cmath>
 
-template<class T> void swap(T& a, T& b)
-{
-	T temp;
-	temp = a;
-	a = b;
-	b = temp;
-}
-
-
 template<class T> class PriorityQueue
 {
 public:
@@ -34,7 +25,7 @@ public:
 		container = other.container;
 	}
 
-	void push (T value)
+	void push (const T& value)
 	{
 		size_t i = container.size();
 		container.push_back(value);
@@ -81,7 +72,7 @@ public:
 	    }
     }
 
-    const T& top() const
+    T top() const
     {
         return *container.begin();
     }
@@ -93,7 +84,7 @@ public:
 
     bool empty() const
     {
-        return !(container.size());
+        return container.empty();
     }
 public:
 	std::vector<T> container;
