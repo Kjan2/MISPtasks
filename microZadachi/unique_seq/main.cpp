@@ -25,10 +25,7 @@ int main(int argc, char* argv[])
     auto uniq = std::unique(v.begin(), v.end());
 
     v.erase(uniq, v.end());
-    for (auto i : v)
-    {
-        //std::cout << i;
-    }
+
 
     std::ofstream out(argv[2]);
 
