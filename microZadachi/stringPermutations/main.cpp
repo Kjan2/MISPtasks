@@ -7,17 +7,26 @@ void printPermutations(std::string s)
     std::sort(s.begin(), s.end());
     do {
         std::cout << s << std::endl;
- std   } while (std::next_permutation(s.begin(), s.end()));
+    } while (std::next_permutation(s.begin(), s.end()));
 }
-x
-void perm(std::string s)
-{
 
+void perm(std::string s, std::string::iterator it1, std::string::iterator it2)
+{
+    if (it1 == it2)
+    {
+        return;
+    }
+
+    std::swap(*it1, *it2);
+
+    std::cout << s;
+
+    perm(s, it1++, it2);
 }
 
 int main()
 {
-    std::string s;
-    std::cin >> s;
-    printPermutations(s);
+    std::string s = "aba";
+    perm(s, s.begin(), --s.end());
+    std::cout << s;
 }
