@@ -10,4 +10,5 @@ int main()
     do {
         std::cout << s << std::endl;
     } while(std::next_permutation(s.begin(), s.end()));
+    return 0;
 }
