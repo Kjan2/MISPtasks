@@ -5,10 +5,15 @@
 int main()
 {
 	std::vector<int> v = {1, 2, 3, 4, 5};
-	std::rotate(v.begin(), v.begin() + 2, v.end());
-	for (int i : v)
+
+	for (int i  = 0; i < v.size(); i++)
 	{
-		std::cout << i << " ";
+        std::shift_right(v.begin(), v.end(), 1);
+        for (auto i : v)
+        {
+            std::cout << i << " ";
+        }
+        std::cout << "\n";
 	}
 	std::cout << "\n";
 }

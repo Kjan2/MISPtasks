@@ -1,7 +1,7 @@
 #include <iostream>
 #include <algorithm>
 #include <string>
-#include <unordered_set>
+#include <unordered_map>
 #include <fstream>
 #include <sstream>
 #include <vector>
@@ -15,7 +15,7 @@ int main()
         return 1;
     }    
 
-    std::unordered_multiset<std::string> map;
+    std::unordered_map<std::string, int> map;
     
     std::string temp;
 
@@ -24,21 +24,17 @@ int main()
         std::stringstream ss(temp);
         while(getline(ss, temp, '\n'))
         {
-            map.insert(temp);
+            if (!(map.insert(std::make_pair(temp, 1)).second))
+            {
+                map[temp]++;   
+            }       
         }
     }
 
-    std::vector<std::string> v;
-    
     for (auto i : map)
     {
-        v.push_back(i); 
+        std::cout << i.first << ":" << i.second << std::endl;
     }
 
-    v.erase(std::unique(v.begin(), v.end()), v.end());
-
-    for (auto i : v)
-    {
-        std::cout << i << ":" << map.count(i) << std::endl;
-    }
+    return 0;
 }
